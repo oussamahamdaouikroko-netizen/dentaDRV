@@ -1,0 +1,39 @@
+{
+  "name": "dentardv",
+  "productName": "DentaRDV",
+  "version": "1.0.0",
+  "description": "Gestion de cabinet dentaire + RDV WhatsApp",
+  "author": "DentaRDV",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win nsis",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.0.0",
+    "@whiskeysockets/baileys": "^6.7.18",
+    "qrcode": "^1.5.4",
+    "pino": "^9.5.0"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.0"
+  },
+  "build": {
+    "appId": "dz.dentardv",
+    "productName": "DentaRDV",
+    "directories": { "output": "dist" },
+    "files": ["main.js", "preload.js", "db.js", "bot.js", "renderer/**/*"],
+    "win": {
+      "target": "nsis",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "artifactName": "DentaRDV-Setup.exe"
+    }
+  }
+}
